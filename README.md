@@ -448,3 +448,20 @@ In the `src` folder, it contained a file called `wg-dashboard.service`, we can u
 
 8. **And now you can reboot your system, and use the command at step 6 to see if it will auto start after the reboot, or just simply access the dashboard through your browser. If you have any questions or problem, please report it in the issue page.**
 
+```
+apt install git
+
+apt install make
+
+git clone https://github.com/wangyu-/udp2raw-tunnel.git
+cd udp2raw-tunnel
+
+apt install build-essential
+
+make
+
+cd
+mv udp2raw-tunnel /usr/local/bin/udp2raw-tunnel
+chmod uo+x /usr/local/bin/udp2raw-tunnel/udp2raw
+setcap cap_net_raw+ep /usr/local/bin/udp2raw-tunnel/udp2raw
+```
