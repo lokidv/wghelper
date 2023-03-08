@@ -401,16 +401,16 @@ In the `src` folder, it contained a file called `wg-dashboard.service`, we can u
 5. Enable the service
 
    ```bash
-   $ sudo chmod 664 /etc/systemd/system/wg-dashboard.service
-   $ sudo systemctl daemon-reload
-   $ sudo systemctl enable wg-dashboard.service
-   $ sudo systemctl start wg-dashboard.service  # <-- To start the service
+   sudo chmod 664 /etc/systemd/system/wg-dashboard.service
+   sudo systemctl daemon-reload
+   sudo systemctl enable wg-dashboard.service
+   sudo systemctl start wg-dashboard.service
    ```
 
 6. Check if the service run correctly
 
    ```bash
-   $ sudo systemctl status wg-dashboard.service
+   sudo systemctl status wg-dashboard.service
    ```
 
    And you should see something like this
