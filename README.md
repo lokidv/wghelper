@@ -465,3 +465,31 @@ mv udp2raw-tunnel /usr/local/bin/udp2raw-tunnel
 chmod uo+x /usr/local/bin/udp2raw-tunnel/udp2raw
 setcap cap_net_raw+ep /usr/local/bin/udp2raw-tunnel/udp2raw
 ```
+then 
+```
+nano /etc/systemd/system/udp2raw.service
+```
+and 
+```
+[Unit]
+Description=Tunnel WireGuard with udp2raw
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/udp2raw-tunnel/udp2raw -s -l0.0.0.0:2085 -r 127.0.0.1:12345    -k "123456" --raw-mode icmp -a --cipher-mode xor --auth-mode simple
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
+```
+and 
+```
+systemctl enable --now udp2raw
+```
+/// 
+in iran 
+```
+/usr/local/bin/udp2raw-tunnel/udp2raw -c -l0.0.0.0:1199  -r"kharej ip":2085  -k "123456" --raw-mode icmp -a --cipher-mode xor --auth-mode simple
+```
