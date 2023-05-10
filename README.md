@@ -172,6 +172,7 @@ git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
 3. Install WGDashboard
 
    ```shell
+   sudo apt remove python3-blinker
    sudo chmod u+x wgd.sh
    sudo ./wgd.sh install
    ```
