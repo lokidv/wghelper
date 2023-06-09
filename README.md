@@ -494,3 +494,17 @@ in iran
 ```
 /usr/local/bin/udp2raw-tunnel/udp2raw -c -l0.0.0.0:1199  -r"kharej ip":2085  -k "123456" --raw-mode icmp -a --cipher-mode xor --auth-mode simple
 ```
+
+for ovpn
+```
+sudo apt update && upgrade -y
+
+
+curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+
+
+chmod +x openvpn-install.sh
+
+
+./openvpn-install.sh
+```
