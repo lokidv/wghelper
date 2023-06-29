@@ -159,7 +159,7 @@ ifconfig eth0
 ```
 
 ```
-git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
+git clone -b v1.0.3 https://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@github.com/lokidv/WGDashboard.git wgdashboard
 ```
 
    
@@ -172,16 +172,16 @@ git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
 3. Install WGDashboard
 
    ```shell
-   this is optinal
-   if you have problem with services use this 
-   pip install -r requirements.txt
+ apt install gunicorn -y
+sudo apt-get -y install python3-pip
+pip install -r requirements.txt
+apt install net-tools
+ifconfig eth0
 
-    sudo apt install gunicorn
-    sudo apt remove python3-blinker
-
-   sudo apt remove python3-blinker
-   sudo chmod u+x wgd.sh
-   sudo ./wgd.sh install
+sudo chmod u+x wgd.sh
+sudo ./wgd.sh install
+sudo chmod -R 755 /etc/wireguard
+./wgd.sh start
 
    
    ```
@@ -360,6 +360,7 @@ In the `src` folder, it contained a file called `wg-dashboard.service`, we can u
    sudo systemctl daemon-reload
    sudo systemctl enable wg-dashboard.service
    sudo systemctl start wg-dashboard.service
+   reboot
    ```
 
 6. Check if the service run correctly
