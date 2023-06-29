@@ -178,10 +178,12 @@ git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
 
     sudo apt install gunicorn
     sudo apt remove python3-blinker
----------
+
    sudo apt remove python3-blinker
    sudo chmod u+x wgd.sh
    sudo ./wgd.sh install
+
+   
    ```
 
 4. Give read and execute permission to root of the WireGuard configuration folder, you can change the path if your configuration files are not stored in `/etc/wireguard`
