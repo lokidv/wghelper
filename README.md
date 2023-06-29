@@ -207,65 +207,6 @@ git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
  
  then copy code in there
  ```
- <div class="bottomNavWrapper"></div>
-<div class="bottom">
-    <nav class="navbar navbar-dark fixed-bottom bg-light flex-md-nowrap p-0 bottomNav">
-        <div class="bottomNavContainer" style="z-index: 1000;">
-            <div class="bottomNavButton bottomNavHome">
-                <i class="bi bi-house"></i>Home
-            </div>
-            <div class="bottomNavButton bottomNavConfigs">
-                <i class="bi bi-files"></i>
-                Configs
-                <div class="subNav bg-light animate__animated">
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Configurations</span>
-                    </h6>
-                    <ul class="nav flex-column">
-                        {% for i in conf%}
-                            <li class="nav-item"><a class="nav-link nav-conf-link sb-{{i['conf']}}-url" href="/configuration/{{i['conf']}}" data-conf-id="{{i['conf']}}"><samp>{{i['conf']}}</samp></a></li>
-                        {%endfor%}
-                    </ul>
-                    <hr>
-                </div>
-            </div>
-            <div class="bottomNavButton bottomNavSettings">
-                <i class="bi bi-gear"></i>
-                Settings
-            </div>
-            <div class="bottomNavButton bottomNavMore">
-                <i class="bi bi-justify"></i>More
-                <div class="subNav bg-light animate__animated">
-                    <ul class="nav flex-column">
-                        {% if session['update'] == "true" %}
-                          
-                        {% endif %}
-                    </ul>
-                    <hr>
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Tools</span>
-                    </h6>
-                    <ul class="nav flex-column">
-                        <ul class="nav flex-column">
-                                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#ping_modal" href="#">Ping</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#traceroute_modal" href="#">Traceroute</a></li>
-                        </ul>
-                    </ul>
-                    <hr>
-                    {% if "username" in session %}
-                        <ul class="nav flex-column">
-                                <li class="nav-item"><a class="nav-link text-danger" href="/signout" style="font-weight: bold">Sign Out</a></li>
-                        </ul>
-                    {% endif %}
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a><small class="nav-link text-muted">بیشتر 800 گیگ نشه</small></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-</div>
-
 <div class="row">
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -275,18 +216,18 @@ git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
                     {% if "username" in session %}
                         <li class="nav-item"><a class="nav-link sb-settings-url" href="/settings">Settings</a></li>
                     {% endif %}
-                    {% if session['update'] == "true" %}
-                  
-                    {% endif %}
+                 
                 </ul>
                 <hr>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Configurations</span>
                 </h6>
                 <ul class="nav flex-column">
-                    {% for i in conf%}
-                        <li class="nav-item"><a class="nav-link nav-conf-link sb-{{i['conf']}}-url" href="/configuration/{{i['conf']}}" data-conf-id="{{i['conf']}}"><samp>{{i['conf']}}</samp></a></li>
-                    {%endfor%}
+                    {% for i in conf %}
+                        <li class="nav-item"><a class="nav-link sb-{{ i['conf'] }}-url"
+                                                href="/configuration/{{ i['conf'] }}"><samp>{{ i['conf'] }}</samp></a>
+                        </li>
+                    {% endfor %}
                 </ul>
                 <hr>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -294,19 +235,23 @@ git clone -b v3.1-dev https://github.com/donaldzou/WGDashboard.git wgdashboard
                 </h6>
                 <ul class="nav flex-column">
                     <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#ping_modal" href="#">Ping</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#traceroute_modal" href="#">Traceroute</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#ping_modal" href="#">Ping</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#traceroute_modal"
+                                                href="#">Traceroute</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/backup">Backup</a></li>
                     </ul>
                 </ul>
                 <hr>
                 {% if "username" in session %}
                     <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link text-danger" href="/signout" style="font-weight: bold">Sign Out</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="/signout" style="font-weight: bold">Sign
+                            Out</a></li>
                     </ul>
                 {% endif %}
-                 <ul class="nav flex-column">
-                     <li class="nav-item"><a"><small class="nav-link text-muted">بیشتر 800 گیگ نشه</small></a></li>
-                 </ul>
+                <ul class="nav flex-column">
+                   
+                </ul>
             </div>
         </nav>
     </div>
