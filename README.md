@@ -1,7 +1,7 @@
 ##### Beta testing on v3.1
 If anyone would love to try out the beta version of v3.1, you can do the following. Let me know if you encountered any issues. ;)
 ```
-sudo apt update && upgrade -y
+sudo apt update && sudo apt upgrade -y
 apt install wireguard
 apt install python3-pip
 ```
