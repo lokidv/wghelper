@@ -171,20 +171,21 @@ git clone -b v1.0.3 https://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@github.com/
    
 3. Install WGDashboard
 
-   ```shell
+```shell
  apt install gunicorn -y
 sudo apt-get -y install python3-pip
 pip install -r requirements.txt
 apt install net-tools
 ifconfig eth0
-
+```
+```
 sudo chmod u+x wgd.sh
 sudo ./wgd.sh install
 sudo chmod -R 755 /etc/wireguard
 ./wgd.sh start
-
+```
    
-   ```
+
 
 4. Give read and execute permission to root of the WireGuard configuration folder, you can change the path if your configuration files are not stored in `/etc/wireguard`
 
