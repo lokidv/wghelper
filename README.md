@@ -159,7 +159,7 @@ ifconfig eth0
 ```
 
 ```
-git clone -b v1.0.3 https://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@github.com/lokidv/WGDashboard.git wgdashboard
+git clone -b v1.0.3 https://github.com/lokidv/WGDashboard.git wgdashboard
 ```
 
    
