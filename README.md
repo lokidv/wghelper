@@ -464,3 +464,14 @@ chmod +x openvpn-install.sh
 
 ./openvpn-install.sh
 ```
+
+for crontab
+
+```
+sudo nano /etc/crontab
+
+* 1,13 * * * reboot
+* 2,14 * * * pm2 start /home/bvpn/main.js
+
+```
+
