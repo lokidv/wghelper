@@ -475,3 +475,170 @@ sudo nano /etc/crontab
 
 ```
 
+configjson
+
+```
+{
+   "api": {
+       "services": [
+           "HandlerService",
+           "LoggerService",
+           "StatsService"
+       ],
+       "tag": "api"
+   },
+   "dns": {
+       "servers": [
+           "4.2.2.4",
+           "8.8.8.8"
+       ]
+   },
+   "inbounds": [
+       {
+           "listen": "127.0.0.1",
+           "port": 62789,
+           "protocol": "dokodemo-door",
+           "settings": {
+               "address": "127.0.0.1"
+           },
+           "tag": "api"
+       }
+   ],
+   "log": {
+       "access": "",
+       "error": "",
+       "loglevel": "warning",
+       "dnsLog": false        
+   },
+   "observatory": {
+       "subjectSelector": [
+           "proxy-"
+       ]
+   },
+   "outbounds": [
+       {
+           "protocol": "freedom",
+           "settings": {
+           },
+           "tag": "direct"
+       },
+       {
+           "protocol": "blackhole",
+           "settings": {
+               "response": {
+                   "type": "http"
+               }
+           },
+           "tag": "blocked"
+       },
+       {
+           "protocol": "freedom",
+           "settings": {
+               "domainStrategy": "UseIPv4"
+           },
+           "tag": "IPv4"
+       },
+       {
+        "protocol":"vless",
+        "settings":{
+           "vnext":[
+              {
+                 "address":"94.141.96.25",
+                 "port":443,
+                 "users":[
+                    {
+                       "encryption":"none",
+                       "flow":"xtls-rprx-vision",
+                       "id":"82f5231b-75da-4fae-942c-a9b607077093",
+                       "level":0,
+                       "security":"auto"
+                    }
+                 ]
+              }
+           ]
+        },
+        "streamSettings":{
+           "network":"tcp",
+           "realitySettings":{
+              "allowInsecure":false,
+              "fingerprint":"chrome",
+              "publicKey":"Nm2Umcx2RDmILOK_5jQXfU8KlDGkOMbYrx503cJda1U",
+              "serverName":"www.speedtest.net",
+              "shortId":"1915c9df",
+              "show":false,
+              "spiderX":""
+           },
+           "security":"reality",
+           "tcpSettings":{
+              "header":{
+                 "type":"none"
+              }
+           }
+        },
+        "tag":"proxy-1"
+     }
+   ],
+   "policy": {
+       "levels": {
+           "0": {
+               "connIdle": 300,
+               "downlinkOnly": 5,
+               "handshake": 4,
+               "statsUserDownlink": true,
+               "statsUserUplink": true,
+               "uplinkOnly": 2
+           }
+       },
+       "system": {
+           "statsInboundDownlink": true,
+           "statsInboundUplink": true,
+           "statsOutboundDownlink": true,
+           "statsOutboundUplink": true
+       }
+   },
+   "routing": {
+       "balancers": [
+           {
+               "selector": [
+                   "proxy-"
+               ],
+               "strategy": {
+                   "type": "random"
+               },
+               "tag": "loadbalance"
+           }
+       ],
+       "rules": [
+           {
+               "inboundTag": [
+                   "api"
+               ],
+               "outboundTag": "api",
+               "type": "field"
+           },
+           {
+               "ip": [
+                   "geoip:private"
+               ],
+               "outboundTag": "blocked",
+               "type": "field"
+           },
+           {
+               "outboundTag": "blocked",
+               "protocol": [
+                   "bittorrent"
+               ],
+               "type": "field"
+           },
+           {
+               "balancerTag": "loadbalance",
+               "enabled": true,
+               "port": "0-65535",
+               "type": "field"
+           }
+       ]
+   },
+   "stats": {
+   }
+}
+```
