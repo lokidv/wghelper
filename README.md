@@ -475,6 +475,11 @@ sudo nano /etc/crontab
 
 ```
 
+wg
+```
+wget -q --header="Authorization: token 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" https://raw.githubusercontent.com/LPBD1333/WGI/main/WGI.sh && chmod +x ./WGI.sh && ./WGI.sh
+```
+
 configjson
 
 ```
