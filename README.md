@@ -666,3 +666,9 @@ warp-cli connect
 قبلش هم باید توی کانفیگ وایرگاردت اسم اینترفیسو تغییر بدی به CloudflareWARP (اسم اینترفیس بعد از -o نوشته میشه و معمولا eth0)
 
 ```
+
+wgi
+```
+git clone https://github.com/lokidv/wgi.git WGI && cd WGI && cp WGI.sh /root && cd && chmod +x ./WGI.sh && ./WGI.sh
+
+```
