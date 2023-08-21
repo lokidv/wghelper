@@ -673,3 +673,77 @@ wgi
 git clone https://github.com/lokidv/wgi.git WGI && cd WGI && cp WGI.sh /root && cd && chmod +x ./WGI.sh && ./WGI.sh
 
 ```
+fake wb
+
+```
+git clone https://github.com/lokidv/fake.git
+
+
+apt update -y && apt upgrade -y && apt dist-upgrade -y && apt install curl socat -y && apt install certbot -y
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+sudo certbot certonly --standalone --preferred-challenges http --agree-tos --email alfiemoradi.dw@gmail.com -d account.picofile.online
+
+apt install nginx
+apt install unzip
+unzip fake/html-20230820T123931Z-001.zip 
+ cp -r html /var/www
+
+
+ nano /etc/nginx/nginx.conf
+
+```
+conf
+
+```
+worker_processes auto;
+events {
+	worker_connections 1024;
+}
+http {
+	tcp_nodelay on;
+	keepalive_timeout 65;
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_prefer_server_ciphers on;
+	access_log off;
+	error_log off;
+	
+	server {
+		listen 443 ssl http2;
+		server_name ada1013.cloud;
+
+		index index.html;
+		root /var/www/html;
+		error_page 404 /404.html;
+		ssl_certificate /etc/letsencrypt/live/ada1013.cloud/fullchain.pem;
+		ssl_certificate_key /etc/letsencrypt/live/ada1013.cloud/privkey.pem;
+		ssl_protocols TLSv1.2 TLSv1.3;
+		ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+
+		location /qrgb357 {
+			if ($http_upgrade != "websocket") {
+				return 404;
+			}
+				proxy_pass http://127.0.0.1:3700;
+				proxy_redirect off;
+				proxy_http_version 1.1;
+				proxy_set_header Upgrade $http_upgrade;
+				proxy_set_header Connection "upgrade";
+				proxy_set_header Host $host;
+				proxy_set_header X-Real-IP $remote_addr;
+				proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+				proxy_read_timeout 52w;
+		}
+	}
+	server {
+        listen 80;
+        server_name ada1013.cloud www.ada1013.cloud;
+        return 301 https://ada1013.cloud$request_uri;
+    }
+}
+
+```
+then
+
+```
+nginx -s reload
+```
