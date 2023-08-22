@@ -470,9 +470,9 @@ for crontab
 ```
 export VISUAL=nano; crontab -e
 
-* 1,13 * * * reboot
-0 */12 * * * sudo pm2 start /home/bvpn/main.js
-0 */12 * * * sudo pm2 save
+* 12 * * * reboot
+0 13 * * * sudo pm2 start /home/bvpn/main.js
+0 13 * * * sudo pm2 save
 
 ```
 
