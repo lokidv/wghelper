@@ -753,6 +753,11 @@ sudo apt install openssh-client
 in server b
 ```
 rm /etc/wireguard/wg0.conf
+systemctl stop wg-quick@wg0
+wgdashboard/src/wgd.sh stop
+systemctl enable --now wg-quick@wg0.service
+wg-quick save wg0
+wgdashboard/src/wgd.sh start
 ```
 in server a
 ```
