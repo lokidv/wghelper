@@ -759,6 +759,7 @@ in server a
 scp /etc/wireguard/wg0.conf root@ip-server:/etc/wireguard/
 scp /root/wgdashboard/src/db/wgdashboard.db root@38.180.44.164:/root/wgdashboard/src/db/
 systemctl enable --now wg-quick@wg0.service
+nano /etc/sysctl.d/99-sysctl.conf
 
 ```
 
