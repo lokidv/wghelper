@@ -754,8 +754,10 @@ in server b
 ```
 rm /etc/wireguard/wg0.conf
 systemctl stop wg-quick@wg0
+systemctl disable wg-quick@wg0
+systemctl restart wg-quick@wg0
 wgdashboard/src/wgd.sh stop
-systemctl enable --now wg-quick@wg0.service
+
 wg-quick save wg0
 wgdashboard/src/wgd.sh start
 ```
@@ -764,7 +766,7 @@ in server a
 scp /etc/wireguard/wg0.conf root@ip:/etc/wireguard/
 scp /root/wgdashboard/src/db/wgdashboard.db root@ip:/root/wgdashboard/src/db/
 nano /etc/sysctl.d/99-sysctl.conf
-
+nano /etc/systemd/system/udp2raw.service
 ```
 
 
