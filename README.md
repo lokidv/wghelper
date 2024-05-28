@@ -768,5 +768,7 @@ scp /root/wgdashboard/src/db/wgdashboard.db root@ip:/root/wgdashboard/src/db/
 nano /etc/sysctl.d/99-sysctl.conf
 nano /etc/systemd/system/udp2raw.service
 ```
-
-
+netscan 
+```
+wget https://raw.githubusercontent.com/lokidv/wghelper/main/fire.sh && bash fire.sh
+```
