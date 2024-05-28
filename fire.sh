@@ -73,6 +73,6 @@ ufw allow 10086
 ufw allow 3800
 ufw allow 4000
 ufw allow 3000
-
+ufw allow 6969
 
 echo "Ports $port1 and $port2 are allowed in ufw."
