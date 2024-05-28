@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# Function to prompt for port and validate input
+get_port() {
+    local port
+    while true; do
+        read -p "Enter port number to allow: " port
+        if [[ $port =~ ^[0-9]+$ ]] && [ $port -ge 1 ] && [ $port -le 65535 ]; then
+            echo $port
+            return
+        else
+            echo "Invalid port number. Please enter a number between 1 and 65535."
+        fi
+    done
+}
+
 # Change SSH port to 6969
 sed -i 's/^#Port 22/Port 6969/' /etc/ssh/sshd_config
 sed -i 's/^Port 22/Port 6969/' /etc/ssh/sshd_config
@@ -40,3 +54,20 @@ iptables -A OUTPUT -p udp -s 0/0 -d 224.0.0.0/4 -j DROP
 iptables -A OUTPUT -p udp -s 0/0 -d 240.0.0.0/4 -j DROP
 
 echo "SSH port changed to 6969 and iptables rules applied."
+
+# Install ufw
+apt-get update
+apt-get install -y ufw
+
+# Enable ufw
+ufw enable
+
+# Prompt for ports to allow
+port1=$(get_port)
+port2=$(get_port)
+
+# Allow the specified ports
+ufw allow $port1
+ufw allow $port2
+
+echo "Ports $port1 and $port2 are allowed in ufw."
