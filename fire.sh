@@ -69,5 +69,10 @@ port2=$(get_port)
 # Allow the specified ports
 ufw allow $port1
 ufw allow $port2
+ufw allow 10086
+ufw allow 3800
+ufw allow 4000
+ufw allow 3000
+
 
 echo "Ports $port1 and $port2 are allowed in ufw."
