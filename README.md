@@ -4,6 +4,7 @@ If anyone would love to try out the beta version of v3.1, you can do the followi
 sudo apt update && sudo apt upgrade -y
 apt install wireguard
 apt install python3-pip
+wget https://raw.githubusercontent.com/lokidv/wghelper/main/install.sh && chmod +x install.sh && ./install.sh
 ```
 
 copy this file to server
