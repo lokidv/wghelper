@@ -773,3 +773,55 @@ netscan
 ```
 wget https://raw.githubusercontent.com/lokidv/wghelper/main/fire.sh && bash fire.sh
 ```
+
+
+http
+
+```
+sudo apt update && sudo apt install -y git build-essential golang
+git clone https://github.com/MikeWang000000/udp2raw.git
+cd udp2raw
+make     
+cd
+cp -r udp2raw /usr/local/bin/
+```
+
+then
+kharej
+```
+sudo nano /etc/systemd/system/tcp-udp2raw.service
+```
+copy
+```
+[Unit]
+Description=Tunnel WireGuard with udp2raw
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/udp2raw/udp2raw -s -l0.0.0.0:2092 -r 127.0.0.1:1146    -k "Aa@!123456" --raw-mode faketcp --fake-http tcp-chat.inknobe.site --cipher-mode aes128cbc --auth-mode hmac_sha1 --seq-mode 2
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
+```
+and for ir
+```
+sudo nano /etc/systemd/system/tcp-SERVICE-udp2raw.service
+```
+and copy
+```
+[Unit]
+Description=Tunnel WireGuard with udp2raw
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/udp2raw/udp2raw -c -l0.0.0.0:1146  -r"37.153.158.125":2092  -k "Aa@!123456" --raw-mode faketcp --fake-http tcp-chat.inknobe.site --cipher-mode aes128cbc --auth-mode hmac_sha1 --seq-mode 2
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
+```
