@@ -785,12 +785,30 @@ make
 cd
 cp -r udp2raw /usr/local/bin/
 ```
+first let get ssl for kharej and set ip in the cloudflare and dont forget to set ip kharej not iran ip
+لطفا ایپی خارج در کلادفر ست کنین با تشکر
+
+```
+apt install curl socat -y
+curl https://get.acme.sh | sh
+
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+
+~/.acme.sh/acme.sh --register-account -m xxxx@xxxx.com
+
+~/.acme.sh/acme.sh --issue -d host.mydomain.com --standalone
+
+```
+
 
 then
 kharej
 ```
 sudo nano /etc/systemd/system/tcp-udp2raw.service
 ```
+
+
+
 copy
 ```
 [Unit]
