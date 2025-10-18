@@ -843,3 +843,53 @@ Restart=no
 [Install]
 WantedBy=multi-user.target
 ```
+
+
+for hys
+
+```
+listen: :8080 
+protocol: quic
+
+acme:
+    domains:
+        - hys2.inknobe.site   
+    email: daksaastuti@gmail.com
+
+auth:
+    type: password
+    password: your_secure_password  
+
+obfs:
+    type: salamander
+    salamander:
+        password: BbU9kd44uwer2eZFEWDFXVGGGO2TLaUase 
+
+masquerade:
+    type: proxy
+    proxy:
+        url: https://google.com/  
+        rewriteHost: true
+
+quic:
+    initStreamReceiveWindow: 8388608
+    maxStreamReceiveWindow: 8388608
+    initConnReceiveWindow: 20971520
+    maxConnReceiveWindow: 20971520
+    maxIdleTimeout: 30s
+    maxIncomingStreams: 1024
+    disablePathMTUDiscovery: false
+
+bandwidth:
+    up: 10 gbps
+    down: 10 gbps
+ignoreClientBandwidth: false
+
+resolver:
+    type: tls
+    tls:
+        addr: 1.1.1.1:853
+        sni: cloudflare-dns.com
+
+mtu: 1400
+```
