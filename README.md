@@ -893,3 +893,50 @@ resolver:
 
 mtu: 1400
 ```
+hys main
+
+```
+listen: :2083
+tls:
+    cert: /var/lib/marznode/certs/cert.crt
+    key: /var/lib/marznode/certs/private.key
+auth:
+    type: command
+    command: echo
+obfs:
+    type: salamander
+    salamander:
+        password: securepassword
+quic:
+    initStreamReceiveWindow: 8388608
+    maxStreamReceiveWindow: 8388608
+    initConnReceiveWindow: 20971520
+    maxConnReceiveWindow: 20971520
+    maxIdleTimeout: 30s
+    maxIncomingStreams: 1024
+    disablePathMTUDiscovery: false
+bandwidth:
+    up: 10 gbps
+    down: 10 gbps
+ignoreClientBandwidth: false
+resolver:
+    type: udp
+    tcp:
+        addr: 8.8.8.8:53
+        timeout: 4s
+    udp:
+        addr: 8.8.4.4:53
+        timeout: 4s
+sniff:
+    enable: true
+    timeout: 2s
+    rewriteDomain: false
+    tcpPorts: 80,443,8000-9000
+    udpPorts: all
+masquerade:
+    type: proxy
+    proxy:
+        url: https://news.ycombinator.com/
+        rewriteHost: true
+
+```
