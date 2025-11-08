@@ -656,9 +656,10 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyr
 
 sudo apt-get update && sudo apt-get install cloudflare-warp
 
-warp-cli register
-
-warp-cli add-excluded-route "ip server iran"
+//old warp-cli register
+sudo warp-cli registration new
+//warp-cli add-excluded-route "ip server iran"
+sudo warp-cli tunnel ip add 185.181.210.141
 
 warp-cli connect
 
