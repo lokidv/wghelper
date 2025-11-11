@@ -941,3 +941,82 @@ masquerade:
         rewriteHost: true
 
 ```
+
+warp
+
+```
+{
+    "log": {
+        "level": "info",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "cloudflare",
+                "address": "https://1.1.1.1/dns-query"
+            }
+        ],
+        "rules": [],
+        "strategy": "prefer_ipv4"
+    },
+    "inbounds": [
+        {
+            "type": "hysteria2",
+            "tag": "hysteria-in",
+            "listen": "::",
+            "listen_port": 2020,
+            "users": [
+                {
+                    "password": "your_secure_password"
+                }
+            ],
+            "obfs": {
+                "type": "salamander",
+                "password": "BbU9kd44uwer2eZFEWDFXVGGGO2TLaUase"
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "warp-test2.trustake.net",
+                "key_path": "/opt/marznode/marz/certs/warp-test2.trustake.net.key",
+                "certificate_path": "/opt/marznode/marz/certs/warp-test2.trustake.net.crt"
+            },
+            "masquerade": "https://google.com",
+            "up_mbps": 10000,
+            "down_mbps": 10000,
+            "ignore_client_bandwidth": false
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "socks",
+            "tag": "warp-proxy",
+            "server": "172.17.0.1",
+            "server_port": 40001,
+            "version": "5"
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            }
+        ],
+        "final": "warp-proxy",
+        "auto_detect_interface": true
+    }
+}
+```
