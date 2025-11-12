@@ -859,40 +859,36 @@ acme:
 
 auth:
     type: password
-    password: your_secure_password  
-
+    password: your_secure_password
 obfs:
     type: salamander
     salamander:
-        password: BbU9kd44uwer2eZFEWDFXVGGGO2TLaUase 
-
+        password: BbU9kd44uwer2eZFEWDFXVGGGO2TLaUase
 masquerade:
     type: proxy
     proxy:
-        url: https://google.com/  
+        url: https://www.cloudflare.com/
         rewriteHost: true
-
 quic:
-    initStreamReceiveWindow: 8388608
-    maxStreamReceiveWindow: 8388608
-    initConnReceiveWindow: 20971520
-    maxConnReceiveWindow: 20971520
-    maxIdleTimeout: 30s
-    maxIncomingStreams: 1024
-    disablePathMTUDiscovery: false
-
+    congestionControl: bbr
+    initStreamReceiveWindow: 16777216
+    maxStreamReceiveWindow: 16777216
+    initConnReceiveWindow: 33554432
+    maxConnReceiveWindow: 33554432
+    maxIdleTimeout: 60s
+    maxIncomingStreams: 256
+    disablePathMTUDiscovery: true
 bandwidth:
-    up: 10 gbps
-    down: 10 gbps
+    up: 1 gbps
+    down: 1 gbps
 ignoreClientBandwidth: false
-
 resolver:
     type: tls
     tls:
         addr: 1.1.1.1:853
         sni: cloudflare-dns.com
-
-mtu: 1400
+        insecure: false
+mtu: 1280
 ```
 hys main
 
