@@ -669,7 +669,7 @@ warp-cli connect
 
 wgi
 ```
-git clone https://github.com/lokidv/wg.git WGI && cd WGI && cp WGI.sh /root && cd && chmod +x ./WGI.sh && ./WGI.sh
+git clone https://github.com/lokidv/wgi.git WGI && cd WGI && cp WGI.sh /root && cd && chmod +x ./WGI.sh && ./WGI.sh
 
 ```
 fake wb
