@@ -4,7 +4,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y git make
 
 # Clone udp2raw-tunnel repository
-#git clone https://github.com/wangyu-/udp2raw.git udp2raw-tunnel
+git clone https://github.com/wangyu-/udp2raw.git udp2raw-tunnel
 
 # Enter the udp2raw-tunnel directory
 cd udp2raw-tunnel
